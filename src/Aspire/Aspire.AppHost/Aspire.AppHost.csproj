@@ -24,6 +24,7 @@
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\Gateway\Grand.Gateway\Grand.Gateway.csproj" />
+		<ProjectReference Include="..\..\Services\Grand.Cms.Api\Grand.Cms.Api.csproj" />
 		<ProjectReference Include="..\..\Services\Grand.Storage.Api\Grand.Storage.Api.csproj" />
 		<ProjectReference Include="..\..\Web\Grand.Web.Admin\Grand.Web.Admin.csproj" />
 		<ProjectReference Include="..\..\Web\Grand.Web.Store\Grand.Web.Store.csproj" />
