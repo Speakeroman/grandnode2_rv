@@ -3,6 +3,7 @@ using Grand.Mapping;
 using Grand.Infrastructure.Configuration;
 using Grand.Infrastructure.Extensions;
 using Grand.Infrastructure.Mapper;
+using Grand.Infrastructure.Messaging;
 using Grand.Infrastructure.Modules;
 using Grand.Infrastructure.Plugins;
 using Grand.Infrastructure.Roslyn;
@@ -240,6 +241,8 @@ public static class StartupBase
     public static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
     {
         services.AddFeatureManagement();
+
+        services.AddSingleton<IEventBus, InMemoryEventBus>();
 
         //find startup configurations provided by other assemblies
         var typeSearcher = new TypeSearcher();

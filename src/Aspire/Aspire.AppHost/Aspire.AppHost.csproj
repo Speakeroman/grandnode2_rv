@@ -16,12 +16,15 @@
 	<ItemGroup>
 		<PackageReference Include="Aspire.Hosting.AppHost" />
 		<PackageReference Include="Aspire.Hosting.MongoDB" />
+		<PackageReference Include="Aspire.Hosting.RabbitMQ" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Aspire.Dashboard.Sdk.$(NETCoreSdkRuntimeIdentifier)" />
 		<PackageReference Include="Aspire.Hosting.Orchestration.$(NETCoreSdkRuntimeIdentifier)" />
 	</ItemGroup>
 	<ItemGroup>
+		<ProjectReference Include="..\..\Gateway\Grand.Gateway\Grand.Gateway.csproj" />
+		<ProjectReference Include="..\..\Services\Grand.Storage.Api\Grand.Storage.Api.csproj" />
 		<ProjectReference Include="..\..\Web\Grand.Web.Admin\Grand.Web.Admin.csproj" />
 		<ProjectReference Include="..\..\Web\Grand.Web.Store\Grand.Web.Store.csproj" />
 		<ProjectReference Include="..\..\Web\Grand.Web.Vendor\Grand.Web.Vendor.csproj" />

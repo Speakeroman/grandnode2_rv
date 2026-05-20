@@ -56,9 +56,9 @@ public static class Extensions
             {
                 tracing.AddSource(builder.Environment.ApplicationName)
                     .AddAspNetCoreInstrumentation()
-                    // Uncomment the following line to enable gRPC instrumentation (requires the OpenTelemetry.Instrumentation.GrpcNetClient package)
-                    //.AddGrpcClientInstrumentation()
-                    .AddHttpClientInstrumentation();
+                    .AddHttpClientInstrumentation()
+                    // MongoDB driver emits traces on the "MongoDB.Driver.Core.Extensions.DiagnosticSources" source
+                    .AddSource("MongoDB.Driver.Core.Extensions.DiagnosticSources");
             });
 
         builder.AddOpenTelemetryExporters();

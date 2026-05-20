@@ -340,6 +340,11 @@ ASALocalRun/
 healthchecksdb
 
 #######################
+## AI assistant local overrides (user-specific, not shared)
+###########
+.claude/settings.local.json
+
+#######################
 ## Grandnode specific
 ###########
 glob:*.user
