@@ -5,7 +5,8 @@ public static class ProjectConfiguration
     public static IResourceBuilder<ProjectResource> ConfigureGrandWebProject(
         this IDistributedApplicationBuilder builder,
         IResourceBuilder<IResourceWithConnectionString> mongodb,
-        IResourceBuilder<ProjectResource> storageApi = null)
+        IResourceBuilder<ProjectResource> storageApi = null,
+        IResourceBuilder<ProjectResource> cmsApi = null)
     {
         var project = builder
             .AddProject<Projects.Grand_Web>("grand-web")
@@ -14,6 +15,9 @@ public static class ProjectConfiguration
 
         if (storageApi != null)
             project = project.WithReference(storageApi).WaitFor(storageApi);
+
+        if (cmsApi != null)
+            project = project.WithReference(cmsApi).WaitFor(cmsApi);
 
         return project;
     }
@@ -25,6 +29,16 @@ public static class ProjectConfiguration
         return builder
             .AddProject<Projects.Grand_Storage_Api>("grand-storage-api")
             .WithHttpEndpoint(5100, name: "storage")
+            .WithReference(mongodb);
+    }
+
+    public static IResourceBuilder<ProjectResource> ConfigureGrandCmsApiProject(
+        this IDistributedApplicationBuilder builder,
+        IResourceBuilder<IResourceWithConnectionString> mongodb)
+    {
+        return builder
+            .AddProject<Projects.Grand_Cms_Api>("grand-cms-api")
+            .WithHttpEndpoint(5200, name: "cms")
             .WithReference(mongodb);
     }
 

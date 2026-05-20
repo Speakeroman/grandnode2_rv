@@ -12,7 +12,8 @@ var mongodb = builder.AddConnectionString("Mongodb");
 //     .WithLifetime(ContainerLifetime.Persistent);
 
 var storageApi = builder.ConfigureGrandStorageApiProject(mongodb);
-var grandWeb = builder.ConfigureGrandWebProject(mongodb, storageApi);
+var cmsApi = builder.ConfigureGrandCmsApiProject(mongodb);
+var grandWeb = builder.ConfigureGrandWebProject(mongodb, storageApi, cmsApi);
 builder.ConfigureGrandGatewayProject(grandWeb);
 
 await builder.Build().RunAsync();
